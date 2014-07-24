@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Loading Bar</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	 <script type="text/javascript" src="js/jquery.loadingbar.js"></script>
+	    <link rel="stylesheet" type="text/css" href="css/loadingbar.css" />
+	<style>
+		body {
+			font-family: sans-serif;
+		}
+		.frame {
+			width: 90%;
+			margin: auto;
+			clear: both;
+		}
+		img {
+			width: 100%;
+		}
+		nav {
+			width: 90%; 
+			margin: auto;
+		}
+		a {
+			text-align: center;
+			line-height: 2em;
+			color: white;
+			font-size: 1.5em;
+			font-family: sans-serif;
+			text-decoration: none;
+			background: #006882;
+			width: 50%;
+			float: left;
+			display: block;
+			margin: 1em auto;
+		}
+		a:last-of-type {
+			background: #00b9bc;
+		}
+		h1 {
+			text-align: center;
+			font-size: 3em;
+			color: #ff5757;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="main">
+				<h1>Ajax Loading Bar</h1>
+				<nav>
+			  		<a href="test.html" class="clickme">Load Image</a>
+			  		<a class="demo2" href="test2.html" data-datatype="html"  data-target="#frame">Load Page</a>
+				</nav>
+        		<div class="frame" id="frame"></div>
+	</div>
+
+
+
+<script type="text/javascript">
+	$(".demo2").loadingbar({
+	      done: function(data) {
+	        $('.frame').html(data).hide().fadeIn('slow');
+			console.log(data);
+
+	      }
+	    });
+	   $(".clickme").loadingbar({
+  target: "#frame",
+  replaceURL: false,
+  direction: "right",
+ 
+  /* Default Ajax Parameters.  */
+  async: true, 
+  complete: function(xhr, text) {},
+  cache: true,
+  error: function(xhr, text, e) {},
+  global: true,
+  headers: {},
+  statusCode: {},
+  success: function(data, text, xhr) {},
+  dataType: "html",
+  done: function(data) {
+	  $('.frame').html(data).hide().fadeIn('slow');
+	  console.log(data);
+
+  }
+});
+  	</script></body>
+</html>
